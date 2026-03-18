@@ -1,9 +1,12 @@
-## Python
+# teraflopai-python
 
+## Installation
 ```bash
 # install from PyPI
 pip install teraflopai
 ```
+
+##  Usage
 
 ### Search Engine API
 ```python
@@ -53,4 +56,29 @@ Customs agents observed a load of 400 kilograms of marijuana being brought in fr
 results = client.segment(text)
 
 print(results["results"])
+```
+
+### Embeddings API
+```python
+from teraflopai import TeraflopAI
+
+url = "https://api.teraflopai.com/v1/embeddings/free"
+
+client = TeraflopAI(url=url)
+
+# Submit multiple strings
+results = client.embeddings(
+    query=["City of Houma", "Text two"], 
+    model="concept-embedding-legal-nano"
+)
+
+print(results)
+
+# Submit single string
+results = client.embeddings(
+    query="City of Houma", 
+    model="concept-embedding-legal-nano"
+)
+
+print(results)
 ```
